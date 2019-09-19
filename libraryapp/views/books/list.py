@@ -1,10 +1,11 @@
 import sqlite3
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from libraryapp.models import Book
 from libraryapp.models import model_factory
 from ..connection import Connection
 
-
+@login_required
 def book_list(request):
     # Always have to specify request method for a view
     if request.method == 'GET':
