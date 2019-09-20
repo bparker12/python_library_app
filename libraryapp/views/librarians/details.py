@@ -7,30 +7,36 @@ from libraryapp.models import model_factory
 from ..connection import Connection
 
 
-def get_library(library_id):
+def get_librarian(librarian_id):
     with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Library)
+        conn.row_factory = model_factory(Book)
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        SELECT
+        select
             l.id,
-            l.title,
-            l.address
-        FROM libraryapp_library l
+            l.location_id,
+            l.user_id,
+            u.first_name,
+            u.last_name,
+            u.username,
+            u.date_joined,
+            u.email
+        from libraryapp_librarian l
+        join auth_user u on l.user_id = u.id
         WHERE l.id = ?
-        """, (library_id,))
+        """, (librarian_id,))
 
         return db_cursor.fetchone()
 
 @login_required
-def library_details(request, library_id):
+def librarian_details(request, librarian_id):
     if request.method == 'GET':
-        library = get_library(library_id)
+        librarian = get_librarian(librarian_id)
 
-        template = 'libraries/detail.html'
+        template = 'librarians/detail.html'
         context = {
-            'library': library
+            'librarian': librarian
         }
 
         return render(request, template, context)
