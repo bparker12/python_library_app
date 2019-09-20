@@ -8,3 +8,4 @@ from .libraries.forms import library_form
 from .books.details import book_details
 from .libraries.details import library_details
 from .librarians.details import librarian_details
+from .books.forms import book_form, book_edit_form
