@@ -5,3 +5,5 @@ from .home import home
 from .auth.logout import logout_user
 from .books.forms import book_form
 from .libraries.forms import library_form
+from .books.details import book_details
+from .libraries.details import library_details
