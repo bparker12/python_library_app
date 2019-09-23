@@ -9,7 +9,7 @@ from ..connection import Connection
 
 def get_library(library_id):
     with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Library)
+        conn.row_factory = model_factory(Library    )
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
