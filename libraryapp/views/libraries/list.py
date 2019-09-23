@@ -88,7 +88,7 @@ def create_library(cursor, row):
     book.id = _row["book_id"]
     book.title = _row["book_title"]
     book.author = _row["author"]
-    book.isbn = _row["isbn"]
+    book.isbn = _row["ISBN"]
     book.year_published = _row["year_published"]
 
     # Return a tuple containing the library and the

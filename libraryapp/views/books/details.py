@@ -57,14 +57,14 @@ def book_details(request, book_id):
                 UPDATE libraryapp_book
                 SET title = ?,
                     author = ?,
-                    isbn = ?,
+                    ISBN = ?,
                     year_published = ?,
                     location_id = ?
                 WHERE id = ?
                 """,
                 (
                     form_data['title'], form_data['author'],
-                    form_data['isbn'], form_data['year_published'],
+                    form_data['ISBN'], form_data['year_published'],
                     form_data["location"], book_id,
                 ))
 
@@ -91,7 +91,7 @@ def create_book(cursor, row):
     book = Book()
     book.id = _row["book_id"]
     book.author = _row["author"]
-    book.isbn = _row["isbn"]
+    book.ISBN = _row["ISBN"]
     book.title = _row["title"]
     book.year_published = _row["year_published"]
 
